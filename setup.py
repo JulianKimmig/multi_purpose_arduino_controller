@@ -11,7 +11,7 @@ setup = dict(
     #py_modules=["multi_purpose_arduino_controller"],
     url="https://github.com/JulianKimmig/multi_purpose_arduino_controller",
     packages=setuptools.find_packages(),
-    install_requires=["numpy"],
+    install_requires=["numpy","pandas"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
