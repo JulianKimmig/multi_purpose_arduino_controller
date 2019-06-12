@@ -6,7 +6,7 @@ import time
 from json_dict import JsonDict
 
 from django_websocket_server.websocket_server import SocketServer
-from python_communicator import PythonCommunicator, TargetNotFoundException
+from multi_purpose_arduino_controller.python_communicator import PythonCommunicator, TargetNotFoundException
 from .datalogger import DataLogger
 
 

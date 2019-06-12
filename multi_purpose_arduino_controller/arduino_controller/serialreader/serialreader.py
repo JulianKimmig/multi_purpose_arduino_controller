@@ -4,11 +4,9 @@ import time
 
 from json_dict import JsonDict
 
-import python_communicator
-
+from multi_purpose_arduino_controller import python_communicator
 from ..datalogger import DataLogger
 from ..serialreader import serialdetector
-from python_communicator import PythonCommunicator
 
 AUTOCHECKPORTS = True
 PORTCHECKTIME = 2
@@ -18,7 +16,7 @@ class SerialReader:
     def __init__(
             self,
             config: JsonDict = None,
-            communicator: PythonCommunicator = None,
+            communicator: python_communicator.PythonCommunicator = None,
             logger=None,
             autocheckports=AUTOCHECKPORTS,
             port_check_time=PORTCHECKTIME,
@@ -44,7 +42,7 @@ class SerialReader:
         self.autocheckports = autocheckports
         self.permanently_ignored_ports = set(permanently_ignored_ports)
 
-        self.set_communicator(PythonCommunicator() if communicator is None else communicator)
+        self.set_communicator(python_communicator.PythonCommunicator() if communicator is None else communicator)
 
 
         self.logger = logging.getLogger("SerialReader") if logger is None else logger
@@ -74,7 +72,7 @@ class SerialReader:
     def run_in_background(self):
         threading.Thread(target=self.read_forever).start()
 
-    def set_communicator(self, communicator: PythonCommunicator):
+    def set_communicator(self, communicator: python_communicator.PythonCommunicator):
         self._communicator = communicator
         self._communicator.add_node("serialreader", self)
 

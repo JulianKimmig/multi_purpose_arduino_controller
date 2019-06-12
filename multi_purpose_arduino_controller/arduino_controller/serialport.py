@@ -8,7 +8,7 @@ from .parseboards import board_by_firmware
 from multi_purpose_arduino_controller.arduino_controller.serialreader.serialreader import SerialReader
 from .basicboard.board import ArduinoBasicBoard
 from .portrequest import validate_buffer
-from python_communicator import PythonCommunicator
+from multi_purpose_arduino_controller.python_communicator import PythonCommunicator
 
 PORTREADTIME = 0.01
 BAUDRATES = (

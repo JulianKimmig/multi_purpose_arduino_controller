@@ -226,3 +226,5 @@ local.properties
 .worksheet
 
 /.idea/
+/upload_to_pypi.py
+/multi_purpose_arduino_controller.iml
