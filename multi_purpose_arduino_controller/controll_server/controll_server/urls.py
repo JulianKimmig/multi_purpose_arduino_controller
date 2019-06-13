@@ -30,6 +30,7 @@ urlpatterns = [path("admin/", admin.site.urls), path("", views.index, name="inde
 for app in get_apps():
     try:
         if hasattr(app, "baseurl"):
+            print(app.label)
             urlpatterns.append(
                 path(
                     app.baseurl + "/",
@@ -38,6 +39,7 @@ for app in get_apps():
                     ),
                 )
             )
+            print(app.label)
 
     except ModuleNotFoundError as e:
         pass
