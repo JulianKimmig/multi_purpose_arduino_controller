@@ -18,6 +18,8 @@ from django.urls import path, include
 
 #
 #if manage.py is called directly
+from multi_purpose_arduino_controller.controll_server.manage import logger
+
 if len(__name__.split(".")) == 2:
     from templatetags.installed_apps import get_apps
 else:
@@ -42,4 +44,5 @@ for app in get_apps():
             print(app.label)
 
     except ModuleNotFoundError as e:
+        logger.exception(e)
         pass
