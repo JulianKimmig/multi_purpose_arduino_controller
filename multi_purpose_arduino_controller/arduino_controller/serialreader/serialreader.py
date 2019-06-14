@@ -101,7 +101,7 @@ class SerialReader:
         while 1:
             if self.autocheckports:
                 self.available_ports, self.ignored_ports = serialdetector.get_avalable_serial_ports(
-                    ignore=self.ignored_ports | self.permanently_ignored_ports
+                    ignore=self.ignored_ports | self.permanently_ignored_ports | set([sp.port for sp in self.connected_ports])
                 )
                 self.deadports = self.available_ports.intersection(self.deadports)
                 newports = self.available_ports - (
@@ -114,6 +114,10 @@ class SerialReader:
                     + str(newports)
                     + "; ignored Ports: "
                     + str(self.ignored_ports | self.permanently_ignored_ports)
+                    + "; ignored Ports: "
+                    +str([sp.port for sp in self.connected_ports])
+                    + "; ignored Ports: "
+                    +str([sp.port for sp in self.identified_ports]),
                 )
 
                 self.sendports()

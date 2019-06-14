@@ -173,7 +173,7 @@ class SerialPort(serial.Serial):
                     **kwargs,
                 )
                 msg = self.communicator.cmd_out(**msg_d)
-                self.logger.info(msg_d)
+                self.logger.debug(msg_d)
 
     def work_port(self):
         while self.is_open:
@@ -188,6 +188,7 @@ class SerialPort(serial.Serial):
                     self.readbuffer.append(c)
                     validate_buffer(self)
                     c = self.read()
+            except serial.serialutil.SerialException:pass
             except Exception as e:
                 self.logger.exception(e)
                 break
