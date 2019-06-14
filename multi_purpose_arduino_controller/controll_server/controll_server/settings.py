@@ -70,7 +70,7 @@ if CONFIG.get("django_settings", "apps", "load_defaults", default=True):
 
 INSTALLED_APPS += CONFIG.get("django_settings", "apps", "additional", default=[])
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), "/var/www/static/"] + CONFIG.get(
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")] + CONFIG.get(
     "django_settings", "static_files", "dirs", default=[]
 )
 
